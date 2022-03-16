@@ -1,0 +1,59 @@
+1 executar o bat hv.bat como administrador
+
+2 reiniciar
+
+3 Hbilita HYPER-v com cmd e dism *********
+
+DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+
+ou só Habilita HYPER-V
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+reinicia
+
+4 - Instalar WSL
+
+wsl --install
+
+reinicia a maquina
+
+5 - criar um vhdx e dps reiniciar
+
+6 - dps no powershell
+
+Mount-VHD -Path "C:\lx.vhdx" -PassThru
+
+7 - formatar pelo linux
+
+ lsblk
+
+sudo mkfs.ext4 /dev/sdX
+
+ONDE X É O SEU DRIVE
+
+8 - cd /mnt/wsl/PHYSICALDRIVE1
+
+touch teste
+
+pronto....
+
+proximo passo é deixar sempre o disco montado toda vez q iniciar o SO
+
+
+
+
+
+
+ 
+
+
+
+
+https://docs.microsoft.com/pt-br/windows/wsl/filesystems
+
+
+
+https://docs.microsoft.com/pt-br/windows/wsl/setup/environment
+
+Mount-VHD -Path "C:\lx.vhdx" -PassThru
