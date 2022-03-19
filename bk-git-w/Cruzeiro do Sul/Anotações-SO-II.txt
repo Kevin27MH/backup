@@ -1,0 +1,86 @@
+
+Gerenciamentos de Processos
+
+Quando um programa está sendo executado na CPU é chamado de PROCESSO (PROCESSO É UM "PROGRAMA" JOB OU TASK) 
+
+O conceito
+de processo é dinâmico (esté em "movimento" ou "fazendo algo") já o programa é estático (fica parado, sem fazer nada). 
+O programa reside em no disco, não faz nenhuma ação sem entrar em execução enquanto
+que o processo reside na memória principal da máquina e está no processo de execução... 
+Em geral, o SO determina
+a fatia de tempo (time-slacing) entre os processos e esta fatia de tempo é imprevisível. Um algoritmo de
+escalonamento determina quando um processo irá parar e outro irá entrar em execução.
+
+O contexto de execução de um processo é o conjunto de dados necessários a sua execução,
+como por exemplo, a identificação do processo chamado de pid, todos os conteúdos dos
+registradores dos processadores.
+
+Essas informações são fundamentais para que um processo interrompido pelo escalonador possa voltar a
+executar exatamente a partir do ponto de parada sem perda de dados ou inconsistências. Tais
+informações são armazenadas em estruturas de dados conhecidas como tabela de processos (BCP)
+
+A troca entre processos concorrentes pela disputa da CPU chama-se mudança de contexto. 
+
+Um dos principais requisitos de um SO é intercalar ou fazer a mudança de contexto
+entre processos.
+Quando o processo é interrompido pelo sistema operacional, seu contexto é salvo no seu
+BCP. Ao retornar a execução, o sistema operacional restaura o contexto do processo, o
+qual continua a executar como se nada tivesse ocorrido. 
+
+O SO deve evitar que os processos entre em deadloock e permitir a criação e comunicação
+entre processos.
+
+O software escalonador deverá cuidar dos processos definindo quem deverá permanecer
+em execução. Uma das políticas para o escalonador é dar fatia de tempo iguais a todos os
+processos mudando o estado do processo de pronto para em execução.
+
+Ao terminar sua quota de tempo para execução, o escalonador o interrompe, colocando-o
+no estado pronto.
+
+Um processo pode ser bloqueado se os
+dados de entrada ou saída, ainda, não estiverem disponíveis ou ele estiver parado à espera da
+ocorrência de um evento.
+
+O processo pode ir para o estado bloqueado informando ao escalonador que entrou em espera,
+simplesmente, enviando um sinal solicitando que outro processo entre em execução ou por
+decisão do escalonador
+
+Para efetuar o compartilhamento da CPU entre processos, o SO possui duas filas de controle:
+a de processos prontos ou ready-list e a de processos bloqueados ou blocked-list. A manipulação
+dessas filas depende da política de escalonamento adotada pelo sistema. Um escalonador
+poderia funcionar da seguinte forma: quando a CPU torna-se disponível, o primeiro elemento
+da fila de processos prontos é retirado e inicia sua execução. Caso seja bloqueado, este irá para
+o final da fila de processos bloqueados. Se a sua quota de execução se esgotar, este será retirado
+da CPU e colocado no final da lista de processos prontos.
+
+ESCALONAMENTO POR PRIORIDADE
+
+ A ideia do algoritmo é simples, a cada processo é associada uma
+prioridade e o processo pronto com maior prioridade é executado primeiro. Para evitar o monopólio
+do processador pelo processo com maior prioridade a cada quantum o sistema deverá decrementar
+a prioridade do processo em execução. O escalonamento por prioridade pode ser por prioridade
+estáticas ou por prioridade dinâmicas.
+
+O escalonamento de um SO pode ser classificado como preemptivo e não-preemptivo. O
+escalonamento é dito preemptivo se o processo em execução na CPU puder ser interrompido
+para a execução de outro processo. Preempção é utilizada em sistemas multitarefa para
+garantir que todos os processos possam progredir e para evitar que um processo monopolize
+a CPU. E o escalonamento é dito não-preemptivo se durante a execução de um processo a
+CPU não puder ser liberada para outro processo. 
+
+INTERRUPÇÃO
+
+Portanto, interrupção é um evento gerado pelo hardware ou por software e que altera a
+sequência na qual o processador executa as instruções. Por exemplo, toda máquina possui em
+clock que é um dispositivo de hardware que gera uma interrupção em tempos regulares no PC
+18 vezes por segundo, fazendo com que a CPU pare de fazer o que estava fazendo e execute
+uma rotina que incremente a hora e data do sistema
+
+
+
+
+
+PESQUISA 
+
+ALGORITIMO DE ESCALONAMENTO (Scheduler) **********************
+TABELA DE PROCESSOS      *************************
